@@ -1,7 +1,7 @@
 from typing import Dict, Union
 import json
-from .explain import explain
-from .helpers import smart_split
+from services.explain import explain
+from services.helpers import smart_split
 
 def make_directive(spec: dict) -> str:
     """Traditional directive-style prompt with clear instructions"""

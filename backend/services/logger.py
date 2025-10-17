@@ -9,7 +9,7 @@ from datetime import datetime
 from typing import Optional, Dict, Any
 from functools import wraps
 from sqlalchemy.orm import Session
-from ..models import Run, PromptVersion
+from models import Run, PromptVersion
 
 logger = logging.getLogger(__name__)
 

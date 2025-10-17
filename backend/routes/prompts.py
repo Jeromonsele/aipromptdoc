@@ -6,13 +6,13 @@ from datetime import datetime
 import os
 import json
 import logging
-from .deps import get_db
-from ..schemas import ExplainIn, ExplainOut, GenerateIn, GenerateOut, RunOut, CompareIn, CompareOut, StatsOut, StatsWeek, StatsAllTime
-from ..services.explain import explain
-from ..services.generate import generate
-from ..services.scoring import compare_prompts
-from ..services.logger import record_run, get_or_create_scratchpad_version, track_event, get_run_stats
-from ..models import Run, PromptScore, PromptTransformation
+from routes.deps import get_db
+from schemas import ExplainIn, ExplainOut, GenerateIn, GenerateOut, RunOut, CompareIn, CompareOut, StatsOut, StatsWeek, StatsAllTime
+from services.explain import explain
+from services.generate import generate
+from services.scoring import compare_prompts
+from services.logger import record_run, get_or_create_scratchpad_version, track_event, get_run_stats
+from models import Run, PromptScore, PromptTransformation
 
 logger = logging.getLogger(__name__)
 router = APIRouter()

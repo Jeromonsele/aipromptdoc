@@ -1,4 +1,4 @@
-from ..db import SessionLocal, init_db
+from db import SessionLocal, init_db
 from typing import Generator
 
 # create tables on import

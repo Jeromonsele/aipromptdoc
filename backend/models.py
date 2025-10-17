@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey, Boolean, Float, DateTime, JSON
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from datetime import datetime
-from .db import Base
+from db import Base
 
 # Version lifecycle constants
 VERSION_STATES = {

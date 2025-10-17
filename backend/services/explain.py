@@ -2,7 +2,7 @@ import re
 import os
 import logging
 from typing import List, Tuple, Optional
-from .helpers import smart_split
+from services.helpers import smart_split
 
 logger = logging.getLogger(__name__)
 
