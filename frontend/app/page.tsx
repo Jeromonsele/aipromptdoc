@@ -141,11 +141,45 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: existingPrompt }),
       });
+      
+      if (!r.ok) {
+        throw new Error("API error");
+      }
+      
       const j = await r.json();
       setCompareRes(j);
       fetchStats();
     } catch (e) {
-      setError("Oops! We couldn't analyze your prompt. Please try again.");
+      // Demo mode fallback when backend isn't available
+      const demoResult = {
+        before: {
+          prompt: existingPrompt,
+          score: 3,
+          problems: [
+            "No explicit task or role",
+            "No explicit output format",
+            "No examples provided",
+            "No constraints or bounds",
+            "No acceptance checks"
+          ],
+          expected_quality_pct: 44
+        },
+        after: {
+          prompt: `You are a precise and helpful assistant.\nTask: ${existingPrompt}\n\nOutput format: Provide your response in a clear, structured format.\n\nConstraints:\n- Be concise and accurate\n- Include only relevant information\n\nQuality checks:\n- Verify all required information is included\n- Ensure output is consistent and well-formatted`,
+          score: 8,
+          problems: ["No examples provided", "No schema or fields listed"],
+          expected_quality_pct: 84,
+          fixes: [
+            "Added explicit role definition",
+            "Added output format specification",
+            "Added constraints for quality control",
+            "Added quality acceptance criteria"
+          ]
+        },
+        improvement_pct: 90
+      };
+      setCompareRes(demoResult);
+      setError("⚠️ Demo mode: Backend not connected. Showing sample transformation.");
     } finally {
       setLoading(false);
     }
