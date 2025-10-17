@@ -10,5 +10,5 @@ SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, futu
 Base = declarative_base()
 
 def init_db():
-    from .models import Project, Prompt, PromptVersion, Run, RunItem
+    from models import Project, Prompt, PromptVersion, Run, RunItem
     Base.metadata.create_all(bind=engine)
