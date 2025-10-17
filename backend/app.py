@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routes.prompts import router as prompts_router
-from .db import init_db
+from routes.prompts import router as prompts_router
+from db import init_db
 
 app = FastAPI(title="Prompt Gauge — Core Generation MVP")
 
